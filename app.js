@@ -55,7 +55,11 @@ const displayTasksFromStorage = () => {
 }
 
 const init = () => {
-   displayTasksFromStorage();
+   if(localStorage.getItem('tasks') === null){
+      localStorage.setItem('tasks', JSON.stringify(tasksArr));
+   }else{
+      displayTasksFromStorage();
+   }
    tasksLeftSpan.textContent = tasksArr.length;
 }
 
